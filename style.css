@@ -1,0 +1,175 @@
+/* إعادة ضبط التنسيقات الأساسية */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* لون الخلفية الكحلي الغامق للموقع */
+body {
+ background-color: #0b132b; /* لون كحلي غامق عصري */
+ color: #ffffff;
+ display: flex;
+ min-height: 100vh;
+ direction: rtl; /* اتجاه الكتابة عربي */
+}
+
+/* الشريط الجانبي بالطول */
+.sidebar {
+ width: 250px;
+ background-color: #1c2541; /* درجة كحلي أفتح قليلاً لإبراز القائمة */
+ padding: 20px 15px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border-left: 1px solid #3a506b;
+}
+
+/* شريط شعار الكشافة أعلى القائمة الجانبية */
+.sidebar .logo-container {
+ text-align: center;
+ margin-bottom: 30px;
+}
+
+.sidebar .logo-container img {
+ width: 90px;
+ height: auto;
+ margin-bottom: 10px;
+}
+
+.sidebar .logo-container h2 {
+ font-size: 1.1rem;
+ color: #48cae4;
+}
+
+/* عناوين وروابط القائمة الجانبية */
+.sidebar ul {
+ list-style: none;
+ width: 100%;
+}
+
+.sidebar ul li {
+ margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+ color: #e0e1dd;
+ text-decoration: none;
+ font-size: 1rem;
+ display: block;
+ padding: 10px 12px;
+ border-radius: 8px;
+ transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+ background-color: #3a506b;
+ color: #ffffff;
+}
+
+/* منطقة المحتوى الرئيسية وشريط العنوان العلوي */
+.main-wrapper {
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+}
+
+/* شريط العنوان العلوي */
+.top-header {
+ background-color: #1c2541;
+ padding: 15px 30px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ border-bottom: 1px solid #3a506b;
+}
+
+.top-header h1 {
+ font-size: 1.3rem;
+ color: #ffffff;
+} 
+/* حاوية أزرار وعناصر اليسار في الشريط العلوي */
+.header-left-actions {
+    diplay: flex;
+    align-items: center;
+    gap:15px;/* مسافة بين مستطيل الدخول وزر الزائد*/
+}
+        /* تنسيق مستطيل تسجيل الدخول */
+    .login-box{ 
+        display: flex;
+        align-items: center;
+        gap:8px;
+        background-color: #16213e;
+        color:#e0e1dd;
+        padding:8px 15px;
+        border-radius:6px;
+        border: 1px solid #3a506b;
+        text-decoration:none;
+        font-size:0.9rem;
+        transition:background 0.3s;
+    }
+        .login-box:hover{
+            background-color: #3a506b;
+           color:#ffffff; 
+        }
+        /* حاوية زر ال + والقائمة المنسدلة  */
+        
+        dropdown{ 
+            position: relative;
+            display: inline-block;
+        }
+        /* تنسيق زر علامة الزائد ( + ) الدائري */
+
+        .add-btn{
+            background-color: #48cae4;
+            color: #0b132b;
+            border: none;
+            width :38px;
+            height:38px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+         add-btn:hover{
+            background-color:#00b4d8;
+        }
+        /* تنسيق القائمة المنسدلة للروابط ( مخفية افتراضيا) */
+        .dropdown-menu{
+            display: none;
+            position: absolute;
+             left: 0;/* تبدا من جهة اليسار تحت الزر مباشرة  */
+            top:45px;
+            background-color: #1c2541;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            border: 1px solid #3a506b;
+            border-radius: 6px;
+            border: 1px solid #3a506b;
+            z-index: 1000;
+            padding: 5px 0;
+        }
+        /* تنسيق العنصر داخل القائمة المنسدلة */
+        .dropdown-menu .dropdown-item{
+            color: #e0e1dd;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .dropdown-menu .dropdown-item:hover{
+            background-color: #3a506b;
+            color: #ffffff;
+        }
+        /* اظهار القائمة تلقائيا عند الوقوف بالماوس علي زر ال + او الحاوية */
+        .dropdown-left-corner:hover .dropdown-menu{
+            display: block;
+        }
+                  
+            
+        
