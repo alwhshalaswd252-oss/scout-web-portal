@@ -3,58 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فريق الجوالة والكشافة</title>
+    <title>منصة فريق الكشافة</title>
     <link rel="stylesheet" href="style.css">
+    <!-- ربط مكتبة Font Awesome للأيقونات عشان نقدر نظهر أيقونات مايكروسوفت وجوجل -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- الشريط الجانبي (Sidebar) -->
-    <aside class="sidebar">
-        <div class="logo-container">
-            <!-- يمكنك وضع مسار شعار الكشافة هنا -->
-            <img src="logo.png" alt="شعار الكشافة">
-            <h2>فريق الكشافة</h2>
+    <!-- 1. الشريط العلوي الرئيسي (ثابت فوق) -->
+    <header class="top-header">
+        <!-- عنوان الموقع في أقصى اليمين -->
+        <div class="header-title">
+            <h1>منصة فريق الجوالة والكشافة</h1>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">القايد العام </a></li>
-                <li><a href="#">  مساعدين القايد العام </a></li>
-                <li><a href="#">    مجموعة القادة  </a></li>
-                <li><a href="#">    قادة الفرق  </a></li>
-                <li><a href="#">   نجمة الاولة   </a></li>
-                <li><a href="#">  مرشة نجمة الاولة </a></li>
-                <li><a href="#">  اعداد قادة </a></li>
-                <li><a href="#">   العرفة </a></li>
-                <li><a href="#">    مساعدين العرفة  </a></li>
-                <li><a href="#"> منقول </a></li>
-                <li><a href ="#"> فرد جديد  </a></li>
-                <li><a href="#">تواصل معنا</a></li>
-            </ul>
-        </nav>
-    </aside>
 
-</header>
-     <header class = "main-header">
-              عنوان الموقع  في الجهة اليمني 
-        <div class ="header-title">
-            <h1> منصة فريق كشافة جوالة </h1>
+        <div class="header-left-actions">
+            <a href="#" class="login-box">
+                <i class="fas fa-user"></i>
+                <span>تسجيل الدخول</span>
+            </a>
+
+            <div class="dropdown">
+                <button class="add-btn" id="dropdownMenuButton" title="إضافة روابط سريعة">+</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://office.live.com" target="_blank">وورد (Word)</a>
+                    <a class="dropdown-item" href="https://office.live.com" target="_blank">إكسل (Excel)</a>
+                    <a class="dropdown-item" href="https://office.live.com" target="_blank">بوربوينت (PowerPoint)</a>
+                    <a class="dropdown-item" href="https://drive.google.com" target="_blank">جوجل درايف (Google Drive)</a>
+                </div>
+            </div>
         </div>
-            حاوية زر الـ + والقائمة المنسدلة (في الجهة اليسار) 
-        <div class="dropdown-left-corner"> 
-                 زر علمة الزايد الدايرة                                   
-            <button class="add-btn" id="dropdownMenuButton"title="اضافة روابط سريعة">
-                <i class ="fas fa-plus">+</i>
-            </button>
-            القائمة المنسدلة التي تظهر عند الوقوف أو الضغط على الزر 
-            <div class="dropdown-menu">
-            <a class="dropdown-item" href="https://office.live.com" targer="_blank">, وورد (Word)</a>
-            <a class="dropdown-item" href="https://office.live.com" target="_blank">إكسل (Excel)</a>
-            <a class="dropdown-item" href="https://office.live.com" target="_blank">بوربوينت (PowerPoint)</a>
-            <a class="dropdown-item" href="https://drive.google.com" target="_blank">جوجل درايف (Google Drive)</a>
-        </div>
-        <!-- باقي المحتوى هيتكتب هنا مستقبلاً -->
-    </div>
-     </header>
+    </header>
+
+    <!-- 2. الحاوية الكبرى التي تقسم الصفحة تحت الشريط العلوي (شريط جانبي + محتوى) -->
+    <div class="main-container">
+        
+        <!-- الشريط الجانبي للأقسام (مثلاً في اليمين) -->
+        <aside class="sidebar">
+            <h3>الأقسام الرئيسية</h3>
+            <ul>
+                <li><a href="#"> القايد العام  </a></li>
+                <li><a href="#">مساعدين القايد العام  </a></li>
+                <li><a href="#">قسم الجوالة</a></li>
+                <li><a href="#">  القادة الكشافة </a></li>
+                <li><a href="#">قادة الفرق  </a></li>
+                <li><a href="#">النجمة الاولي </a></li>
+                <li><a href="#">مرشح النجمة الاولي </a></li>
+                <li><a href="#">اعداد قادة     </a></li>
+                <li><a href="#">عارفة الفرق  </a></li>
+                <li><a href="#">   مساعدين العريف الفريق  </a></li>
+                <li><a href="#">الأنشطة والرحلات</a></li>
+
+            </ul>
+        </aside>
+
+        <!-- محتوى الصفحة الرئيسي -->
+        <main class="main-content">
+        </main>
+
+    
+<!-- استدعاء ملف الجافا سكريبت الخارجي -->
+    <script src="script.js"></script></body>
+
 </body>
 </html>

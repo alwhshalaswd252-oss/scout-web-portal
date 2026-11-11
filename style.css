@@ -1,175 +1,383 @@
-/* إعادة ضبط التنسيقات الأساسية */
+/* إعادة ضبط الهوامش الافتراضية لكل العناصر عشان نبدأ على نظافة */
 * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* لون الخلفية الكحلي الغامق للموقع */
+/* خلفية الصفحة العامة باللون الكحلي الغامق */
 body {
- background-color: #0b132b; /* لون كحلي غامق عصري */
- color: #ffffff;
- display: flex;
- min-height: 100vh;
- direction: rtl; /* اتجاه الكتابة عربي */
+    background-color: #0b132b;
+    color: #ffffff;
+    min-height: 100vh;
+    direction: rtl;
+    display: flex;
+    flex-direction: column; 
 }
 
-/* الشريط الجانبي بالطول */
+/* تصميم الشريط العلوي بالعرض */
+.top-header {
+    background-color: #1c2541; /* لون خلفية الشريط كحلي أفتح شوية */
+    padding: 15px 30px;        /* مسافات داخلية عشان الكلام ميلزقش في الحواف */
+    display: flex;             /* بيخلي العناصر جوه الشريط تقف جنب بعضها بمرونة */
+    align-items: center;       /* توسيط العناصر عمودياً في النص */
+    justify-content: space-between; /* بيبعد العنوان يمين خالص والأزرار شمال خالص */
+    border-bottom: 1px solid #3a506b; /* خط سفلي فاصل خفيف */
+    width: 100%;
+    height: 70px; /* تحديد ارتفاع ثابت للشريط العلوي */
+}
+
+/* عنوان الموقع */
+.header-title h1 {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+/* حاوية أزرار اليسار (تسجيل الدخول وزر الزائد) */
+.header-left-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* مسافة فاصلة بين مستطيل الدخول وزر الزائد */
+}
+
+/* تصميم مستطيل تسجيل الدخول */
+.login-box {
+    background-color: #16213e;
+    color: #e0e1dd;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #3a506b;
+    text-decoration: none; /* إلغاء الخط اللي تحت الرابط */
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* مسافة بين أيقونة المستخدم وكلمة تسجيل الدخول */
+    transition: background 0.3s;
+}
+
+.login-box:hover {
+    background-color: #3a506b; /* تغيير اللون عند المرور بالماوس */
+    color: #ffffff;
+}
+
+/* حاوية زر الزائد والقائمة */
+.dropdown {
+    position: relative; /* ضروري عشان القائمة المنسدلة تظهر تحته بالضبط */
+    display: inline-block;
+}
+
+/* تصميم زر علامة الزائد (+) الدائري */
+.add-btn {
+    background-color: #48cae4; /* لون خلفية أزرق فاتح مميز */
+    color: #0b132b;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;       /* بيخلي الزر دائري الشكل تماماً */
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #00b4d8;
+}
+
+/* تصميم القائمة المنسدلة (مخفية افتراضياً) */
+.dropdown-menu {
+    display: none;              /* مخفية في العادي ومش بتظهر غير بالماوس */
+    position: absolute;         /* تطفو فوق العناصر من غير ما تزقها */
+    left: 0;                    /* تلزق في ناحية اليسار تحت الزر */
+    top: 45px;                  /* تنزل لتحت شوية عن الزر بمسافة مناسبة */
+    background-color: #1c2541;
+    min-width: 190px;           /* عرض القائمة */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.4); /* ظل خفيف تحت القائمة */
+    border-radius: 6px;
+    border: 1px solid #3a506b;
+    z-index: 1000;              /* عشان تظهر فوق أي حاجة تانية في الصفحة */
+}
+
+/* تصميم الروابط جوا القائمة المنسدلة */
+.dropdown-menu .dropdown-item {
+    color: #e0e1dd;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;                  /* مسافة بين الأيقونة والنص */
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #3a506b;  /* لون خلفية عند الوقوف على الرابط بالماوس */
+    color: #ffffff;
+}
+
+/* جعل الأيقونة داخل القائمة تأخذ حجماً منظماً ومحاذاة صحيحة */
+.dropdown-menu .dropdown-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* أمر إظهار القائمة تلقائياً عند الوقوف بالماوس على الحاوية بتاعتها */
+.dropdown:-menu.show {
+    display: block;
+}
+
+
+/* تنسيق الحاوية الرئيسية والشريط الجانبي */
+.main-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
 .sidebar {
- width: 250px;
- background-color: #1c2541; /* درجة كحلي أفتح قليلاً لإبراز القائمة */
- padding: 20px 15px;
- display: flex;
- flex-direction: column;
- align-items: center;
- border-left: 1px solid #3a506b;
+    width: 260px;
+    background-color: #16213e;
+    border-left: 1px solid #3a506b;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* شريط شعار الكشافة أعلى القائمة الجانبية */
-.sidebar .logo-container {
- text-align: center;
- margin-bottom: 30px;
+.sidebar h3 {
+    font-size: 1.1rem;
+    color: #48cae4;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #3a506b;
+    padding-bottom: 10px;
 }
 
-.sidebar .logo-container img {
- width: 90px;
- height: auto;
- margin-bottom: 10px;
-}
-
-.sidebar .logo-container h2 {
- font-size: 1.1rem;
- color: #48cae4;
-}
-
-/* عناوين وروابط القائمة الجانبية */
 .sidebar ul {
- list-style: none;
- width: 100%;
+    list-style: none;
 }
 
 .sidebar ul li {
- margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .sidebar ul li a {
- color: #e0e1dd;
- text-decoration: none;
- font-size: 1rem;
- display: block;
- padding: 10px 12px;
- border-radius: 8px;
- transition: background 0.3s;
+    color: #e0e1dd;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* مسافة بين أيقونة القسم ونص القسم */
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+    font-size: 0.95rem;
+}
+
+.sidebar ul li a i {
+    color: #48cae4; /* لون موحد لأيقونات الشريط الجانبي */
 }
 
 .sidebar ul li a:hover {
- background-color: #3a506b;
- color: #ffffff;
+    background-color: #3a506b;
+    color: #ffffff;
 }
 
-/* منطقة المحتوى الرئيسية وشريط العنوان العلوي */
-.main-wrapper {
- flex: 1;
- display: flex;
- flex-direction: column;
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #0b132b;
 }
 
-/* شريط العنوان العلوي */
+.main-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.main-content p {
+    color: #a0aab2;
+}
+
+/* إعادة الضبط الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b132b;
+    color: #ffffff;
+    min-height: 100vh;
+    direction: rtl;
+    display: flex;
+    flex-direction: column; /* الشريط العلوي فوق، وتحته باقي الصفحة */
+}
+
+/* تصميم الشريط العلوي */
 .top-header {
- background-color: #1c2541;
- padding: 15px 30px;
- display: flex;
- align-items: center;
- justify-content: space-between;
- border-bottom: 1px solid #3a506b;
-}
-
-.top-header h1 {
- font-size: 1.3rem;
- color: #ffffff;
-} 
-/* حاوية أزرار وعناصر اليسار في الشريط العلوي */
-.header-left-actions {
-    diplay: flex;
+    background-color: #1c2541;
+    padding: 15px 30px;
+    display: flex;
     align-items: center;
-    gap:15px;/* مسافة بين مستطيل الدخول وزر الزائد*/
+    justify-content: space-between;
+    border-bottom: 1px solid #3a506b;
+    width: 100%;
+    height: 70px; /* تحديد ارتفاع ثابت للشريط العلوي */
 }
-        /* تنسيق مستطيل تسجيل الدخول */
-    .login-box{ 
-        display: flex;
-        align-items: center;
-        gap:8px;
-        background-color: #16213e;
-        color:#e0e1dd;
-        padding:8px 15px;
-        border-radius:6px;
-        border: 1px solid #3a506b;
-        text-decoration:none;
-        font-size:0.9rem;
-        transition:background 0.3s;
-    }
-        .login-box:hover{
-            background-color: #3a506b;
-           color:#ffffff; 
-        }
-        /* حاوية زر ال + والقائمة المنسدلة  */
-        
-        dropdown{ 
-            position: relative;
-            display: inline-block;
-        }
-        /* تنسيق زر علامة الزائد ( + ) الدائري */
 
-        .add-btn{
-            background-color: #48cae4;
-            color: #0b132b;
-            border: none;
-            width :38px;
-            height:38px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-         add-btn:hover{
-            background-color:#00b4d8;
-        }
-        /* تنسيق القائمة المنسدلة للروابط ( مخفية افتراضيا) */
-        .dropdown-menu{
-            display: none;
-            position: absolute;
-             left: 0;/* تبدا من جهة اليسار تحت الزر مباشرة  */
-            top:45px;
-            background-color: #1c2541;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
-            border: 1px solid #3a506b;
-            border-radius: 6px;
-            border: 1px solid #3a506b;
-            z-index: 1000;
-            padding: 5px 0;
-        }
-        /* تنسيق العنصر داخل القائمة المنسدلة */
-        .dropdown-menu .dropdown-item{
-            color: #e0e1dd;
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-        .dropdown-menu .dropdown-item:hover{
-            background-color: #3a506b;
-            color: #ffffff;
-        }
-        /* اظهار القائمة تلقائيا عند الوقوف بالماوس علي زر ال + او الحاوية */
-        .dropdown-left-corner:hover .dropdown-menu{
-            display: block;
-        }
-                  
-            
-        
+.header-title h1 {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.header-left-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-box {
+    background-color: #16213e;
+    color: #e0e1dd;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #3a506b;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.login-box:hover {
+    background-color: #3a506b;
+    color: #ffffff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.add-btn {
+    background-color: #48cae4;
+    color: #0b132b;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #00b4d8;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 45px;
+    background-color: #1c2541;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+    border-radius: 6px;
+    border: 1px solid #3a506b;
+    z-index: 1000;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #e0e1dd;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #3a506b;
+    color: #ffffff;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* ========================================== */
+/* تصميم الحاوية الكبرى (الشريط الجانبي + المحتوى) */
+/* ========================================== */
+
+.main-container {
+    display: flex;
+    flex: 1; /* تأخذ باقي ارتفاع الشاشة تحت الشريط العلوي */
+    width: 100%;
+}
+
+/* تصميم الشريط الجانبي للأقسام (في اليمين) */
+.sidebar {
+    width: 260px;
+    background-color: #16213e;
+    border-left: 1px solid #3a506b; /* خط فاصل بين القائمة والمحتوى */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h3 {
+    font-size: 1.1rem;
+    color: #48cae4;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #3a506b;
+    padding-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #e0e1dd;
+    text-decoration: none;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+    font-size: 0.95rem;
+}
+
+.sidebar ul li a:hover {
+    background-color: #3a506b;
+    color: #ffffff;
+}
+
+/* تصميم منطقة المحتوى الرئيسية بجانب القائمة */
+.main-content {
+    flex: 1; /* تأخذ باقي عرض الشاشة المتبقي */
+    padding: 30px;
+    background-color: #0b132b;
+}
+
+.main-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.main-content p {
+    color: #a0aab2;
+}
